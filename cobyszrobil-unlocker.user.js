@@ -12,13 +12,15 @@
 
 (function () {
   'use strict';
-
+  
+  // tubson i 60 (niestety licznik nie beda dzialaly)
   ['input', 'compositionend'].forEach(type =>
     window.addEventListener(type, e => {
       if (e.target.tagName === 'TEXTAREA') e.stopImmediatePropagation();
     }, true)
   );
 
+  // podczas pisania cinkrof/cini nie dopisuje "łajza"
   const origExec = RegExp.prototype.exec;
   RegExp.prototype.exec = function (s) {
     if (this.source.includes('cinkrof')) return null;
